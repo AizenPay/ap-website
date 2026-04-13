@@ -1,0 +1,55 @@
+# AiZenPay Website — Netlify Configuration
+# Phase 1: Static HTML/CSS — Zero build step
+
+[build]
+  publish = "."
+
+# ── Security Headers ──
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options              = "DENY"
+    X-Content-Type-Options       = "nosniff"
+    Referrer-Policy              = "strict-origin-when-cross-origin"
+    X-XSS-Protection             = "1; mode=block"
+    Permissions-Policy           = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy      = "default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; script-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
+    Strict-Transport-Security    = "max-age=63072000; includeSubDomains; preload"
+
+# ── Caching: Fonts & Images (long TTL) ──
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/styles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/scripts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# ── Redirects ──
+[[redirects]]
+  from   = "/home"
+  to     = "/"
+  status = 301
+
+[[redirects]]
+  from   = "/apply"
+  to     = "/get-started.html"
+  status = 301
+
+[[redirects]]
+  from   = "/partner"
+  to     = "/partners.html"
+  status = 301
+
+# 404 fallback
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 404

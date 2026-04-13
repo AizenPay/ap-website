@@ -1,0 +1,5 @@
+# AiZenPay — Netlify Redirects
+/home              /                    301
+/apply             /get-started.html    301
+/partner           /partners.html       301
+/*                 /index.html          404

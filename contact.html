@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact AiZenPay — Get in Touch</title>
+  <meta name="description" content="Have a question about AiZenPay? Reach out to our team. We respond to all inquiries within one business day." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aizenpay.com/contact.html" />
+  <meta property="og:title" content="Contact AiZenPay" />
+  <meta property="og:description" content="Get in touch with the AiZenPay team." />
+  <meta property="og:image" content="https://aizenpay.com/images/og-default.png" />
+  <meta property="og:url" content="https://aizenpay.com/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@AiZenPay" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <div id="nav-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;opacity:0;transition:opacity 0.2s ease;"></div>
+  <style>#nav-overlay.visible { display:block !important; opacity:1; }</style>
+
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="navbar__inner">
+        <a href="index.html" class="navbar__logo" aria-label="AiZenPay Home">
+          <img src="images/logo.png" alt="AiZenPay" width="140" height="42" />
+        </a>
+        <div class="navbar__nav" role="menubar">
+          <a href="products.html"     class="navbar__link" role="menuitem">Products</a>
+          <a href="why-aizenpay.html" class="navbar__link" role="menuitem">Why AiZenPay</a>
+          <a href="about.html"        class="navbar__link" role="menuitem">About</a>
+          <a href="partners.html"     class="navbar__link" role="menuitem">Partners</a>
+        </div>
+        <div class="navbar__cta">
+          <a href="get-started.html" class="btn-primary">Get Started &rarr;</a>
+        </div>
+        <button class="navbar__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="navbar__drawer" id="mobile-drawer" role="dialog" aria-label="Mobile navigation">
+      <a href="products.html"     class="navbar__link">Products</a>
+      <a href="why-aizenpay.html" class="navbar__link">Why AiZenPay</a>
+      <a href="about.html"        class="navbar__link">About</a>
+      <a href="partners.html"     class="navbar__link">Partners</a>
+      <a href="get-started.html"  class="btn-primary" style="margin-top:20px;">Get Started &rarr;</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-body">
+
+    <section class="section section--navy-dk" aria-labelledby="contact-heading">
+      <div class="container" style="max-width:960px;">
+        <div class="section__header reveal">
+          <span class="eyebrow">Contact</span>
+          <h1 id="contact-heading">Get in Touch</h1>
+          <p>Have a question about our platform, pricing, or partnership opportunities? We respond to all inquiries within one business day.</p>
+        </div>
+
+        <div class="split-layout" style="gap:40px;">
+
+          <!-- FORM -->
+          <div class="reveal">
+            <div class="feature-card" style="padding:40px 44px;">
+              <div id="contact-success" class="form-success">
+                <div class="form-success__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00CDB8" stroke-width="2" width="32" height="32"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Message Sent!</h3>
+                <p>Thank you for reaching out. Someone from our team will respond within one business day.</p>
+              </div>
+
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                data-success-id="contact-success"
+                novalidate
+                aria-label="Contact form"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <input name="bot-field" style="display:none" tabindex="-1" aria-hidden="true" />
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="c-first-name">First Name <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="c-first-name" name="first_name" class="form-field" required autocomplete="given-name" />
+                    <div class="form-error" role="alert"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="c-last-name">Last Name <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="c-last-name" name="last_name" class="form-field" required autocomplete="family-name" />
+                    <div class="form-error" role="alert"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="c-company">Company</label>
+                  <input type="text" id="c-company" name="company" class="form-field" autocomplete="organization" />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="c-email">Email Address <span class="required" aria-hidden="true">*</span></label>
+                    <input type="email" id="c-email" name="email" class="form-field" required autocomplete="email" />
+                    <div class="form-error" role="alert"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="c-phone">Phone Number</label>
+                    <input type="tel" id="c-phone" name="phone" class="form-field" autocomplete="tel" />
+                    <div class="form-error" role="alert"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="c-inquiry-type">Inquiry Type <span class="required" aria-hidden="true">*</span></label>
+                  <select id="c-inquiry-type" name="inquiry_type" class="form-field" required>
+                    <option value="" disabled selected>Select topic…</option>
+                    <option value="merchant">Merchant Account / Processing</option>
+                    <option value="partner">Partnership Opportunities</option>
+                    <option value="technical">Technical / Integration Support</option>
+                    <option value="pricing">Pricing Information</option>
+                    <option value="press">Press &amp; Media</option>
+                    <option value="general">General Inquiry</option>
+                  </select>
+                  <div class="form-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="c-message">Message <span class="required" aria-hidden="true">*</span></label>
+                  <textarea id="c-message" name="message" class="form-field" required rows="5" placeholder="How can we help?"></textarea>
+                  <div class="form-error" role="alert"></div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:28px;">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="consent" required />
+                    I agree to AiZenPay's <a href="privacy.html" target="_blank">Privacy Policy</a> and <a href="terms.html" target="_blank">Terms of Service</a>. <span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <div class="form-error" role="alert"></div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-primary--lg" style="width:100%; justify-content:center;">
+                  Send Message &rarr;
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- SIDEBAR INFO -->
+          <aside class="reveal reveal-right">
+            <div class="sidebar-card" style="position:static;">
+              <h3 style="margin-bottom:24px;">Contact Information</h3>
+              <div style="display:flex; flex-direction:column; gap:24px;">
+                <div>
+                  <div style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--c-teal); margin-bottom:6px;">General Inquiries</div>
+                  <a href="mailto:info@aizenpay.com" style="color:var(--c-white); font-size:15px; font-weight:500;">info@aizenpay.com</a>
+                </div>
+                <div>
+                  <div style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--c-teal); margin-bottom:6px;">Merchant Support</div>
+                  <a href="mailto:support@aizenpay.com" style="color:var(--c-white); font-size:15px; font-weight:500;">support@aizenpay.com</a>
+                </div>
+                <div>
+                  <div style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--c-teal); margin-bottom:6px;">Partnerships</div>
+                  <a href="mailto:partners@aizenpay.com" style="color:var(--c-white); font-size:15px; font-weight:500;">partners@aizenpay.com</a>
+                </div>
+                <div>
+                  <div style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--c-text-mid); margin-bottom:6px;">Response Time</div>
+                  <p style="font-size:14px; color:var(--c-text-body); margin:0; line-height:1.6;">We respond to all inquiries within <strong style="color:var(--c-white);">one business day</strong>, typically much sooner.</p>
+                </div>
+              </div>
+
+              <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--c-border);">
+                <div style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--c-text-mid); margin-bottom:12px;">Ready to Apply?</div>
+                <p style="font-size:13px; color:var(--c-text-body); margin-bottom:16px; line-height:1.6;">If you're ready to start accepting payments, the fastest path is our merchant application.</p>
+                <a href="get-started.html" class="btn-primary" style="width:100%; justify-content:center;">Start Application &rarr;</a>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" aria-label="AiZenPay Home"><img src="images/logo.png" alt="AiZenPay" class="footer__logo" width="130" height="39" /></a>
+        <p>AI-powered payment processing built for the intelligent enterprise. PCI DSS Level 1 compliant infrastructure.</p>
+        <div class="footer__social" aria-label="Social media links">
+          <!-- TODO: Replace with live social URLs -->
+          <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="footer__social-link" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="footer__social-link" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="footer__col-title">Products</div><ul class="footer__links"><li><a href="products.html#card-present" class="footer__link">Card-Present</a></li><li><a href="products.html#card-not-present" class="footer__link">Card-Not-Present</a></li><li><a href="products.html#aizenhub" class="footer__link">AiZenHub <span class="badge-soon">Soon</span></a></li></ul></div>
+      <div><div class="footer__col-title">Company</div><ul class="footer__links"><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="why-aizenpay.html" class="footer__link">Why AiZenPay</a></li><li><a href="partners.html" class="footer__link">Partners</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+      <div><div class="footer__col-title">Legal</div><ul class="footer__links"><li><a href="privacy.html" class="footer__link">Privacy Policy</a></li><li><a href="terms.html" class="footer__link">Terms of Service</a></li></ul></div>
+    </div>
+    <div style="max-width:var(--max-width); margin:0 auto; padding:0 32px;">
+      <div class="footer__bottom">
+        <div class="footer__bottom-left">&copy; 2026 AiZenPay Inc. &nbsp;&middot;&nbsp; All trademarks are property of their respective owners.</div>
+        <div class="footer__bottom-right">Payments Engineered for What's Next</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie notice" aria-live="polite">
+    <p>We use essential cookies to ensure this website works properly. <a href="privacy.html">Learn more</a></p>
+    <button id="cookie-accept" class="btn-primary" style="white-space:nowrap; flex-shrink:0;">Accept</button>
+  </div>
+
+  <script src="scripts/main.js" defer></script>
+  <script src="scripts/form-handler.js" defer></script>
+  <script src="scripts/animations.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+/* ============================================================
+   AiZenPay — Base Styles & Reset
+   styles/base.css
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--f-body);
+  font-size: var(--fs-base);
+  font-weight: 400;
+  color: var(--c-white);
+  background-color: var(--c-navy-dk);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Skip to Content (Accessibility) ── */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--c-teal);
+  color: var(--c-navy-dk);
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  text-decoration: none;
+  transition: top var(--transition);
+}
+.skip-to-content:focus {
+  top: 16px;
+}
+
+/* ── Typography Scale ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--f-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--c-white);
+}
+
+h1 { font-size: clamp(36px, 5vw, var(--fs-4xl)); font-weight: 800; letter-spacing: -1px; }
+h2 { font-size: clamp(26px, 3.5vw, var(--fs-3xl)); letter-spacing: -0.5px; }
+h3 { font-size: clamp(20px, 2.5vw, var(--fs-xl)); }
+h4 { font-size: var(--fs-lg); }
+h5 { font-size: var(--fs-md); }
+h6 { font-size: var(--fs-base); }
+
+p {
+  color: var(--c-text-body);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+a {
+  color: var(--c-teal);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--c-teal-lt); }
+a:focus-visible {
+  outline: 2px solid var(--c-teal);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+ul, ol { list-style: none; }
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--f-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--f-body);
+  font-size: var(--fs-base);
+}
+
+/* ── Eyebrow Label ── */
+.eyebrow {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-teal);
+  margin-bottom: 14px;
+}
+
+/* ── Section Divider ── */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-teal), var(--c-teal-lt));
+  border-radius: 2px;
+  margin: 20px 0;
+}
+
+/* ── Utility: Teal Highlight in Headings ── */
+.text-teal  { color: var(--c-teal); }
+.text-silver { color: var(--c-silver); }
+.text-mid   { color: var(--c-text-mid); }
+.text-body  { color: var(--c-text-body); }
+
+/* ── Coming Soon Badge ── */
+.badge-soon {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(255, 184, 0, 0.15);
+  color: var(--c-amber);
+  border: 1px solid rgba(255, 184, 0, 0.25);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* ── Phase badge ── */
+.badge-teal {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--c-teal-dim);
+  color: var(--c-teal);
+  border: 1px solid var(--c-border-teal);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+/* ── Focus Ring (Global) ── */
+:focus-visible {
+  outline: 2px solid var(--c-teal);
+  outline-offset: 3px;
+}

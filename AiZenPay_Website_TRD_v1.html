@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AiZenPay Website — Technical Requirements Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:    #00CDB8;
+      --teal-lt: #00EDD6;
+      --silver:  #B8C4CA;
+      --navy:    #1C2340;
+      --navy-dk: #131829;
+      --navy-lt: #252E50;
+      --navy-mid:#1E2845;
+      --white:   #FFFFFF;
+      --text-mid:#8A9AB0;
+      --text-body:#C8D4DC;
+      --border:  rgba(255,255,255,0.08);
+      --code-bg: rgba(0,205,184,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy-dk);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── Sidebar TOC ── */
+    .sidebar {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: 260px;
+      background: var(--navy);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 28px 0;
+      z-index: 100;
+    }
+    .sidebar-logo {
+      padding: 0 24px 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .sidebar-logo .brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--white);
+    }
+    .sidebar-logo .brand span { color: var(--teal); }
+    .sidebar-logo .doc-title {
+      font-size: 11px;
+      color: var(--text-mid);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .toc-section {
+      padding: 0 0 16px;
+    }
+    .toc-section-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      padding: 0 24px 8px;
+    }
+    .toc-link {
+      display: block;
+      padding: 6px 24px;
+      font-size: 13px;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+      border-left: 2px solid transparent;
+    }
+    .toc-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+      border-left-color: var(--teal);
+    }
+
+    /* ── Main Content ── */
+    .main {
+      margin-left: 260px;
+      padding: 56px 64px 80px;
+      max-width: 1100px;
+    }
+
+    /* ── Doc Header ── */
+    .doc-header {
+      margin-bottom: 64px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-header .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .doc-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .doc-header h1 span { color: var(--teal); }
+    .doc-header .subtitle {
+      font-size: 16px;
+      color: var(--text-body);
+      max-width: 640px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .meta-row {
+      display: flex;
+      gap: 32px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .meta-item { display: flex; flex-direction: column; }
+    .meta-item .ml { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-mid); margin-bottom: 3px; }
+    .meta-item .mv { font-size: 13px; color: var(--silver); font-weight: 500; }
+
+    /* ── Sections ── */
+    .section {
+      margin-bottom: 72px;
+      padding-top: 8px;
+    }
+    .section-number {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.3px;
+      color: var(--white);
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin: 32px 0 14px;
+    }
+    .section h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--silver);
+      margin: 20px 0 10px;
+      letter-spacing: 0.3px;
+    }
+    .section p {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 14px;
+      max-width: 740px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--navy-lt);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    .card.highlight {
+      border-color: rgba(0,205,184,0.25);
+      background: rgba(0,205,184,0.05);
+    }
+    .card.warning {
+      border-color: rgba(255,180,0,0.25);
+      background: rgba(255,180,0,0.04);
+    }
+
+    /* ── Grid layouts ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+
+    /* ── Info blocks ── */
+    .info-block {
+      background: var(--navy-mid);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+    .info-block.amber { border-left-color: #FFB800; }
+    .info-block .ib-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+    .info-block.amber .ib-title { color: #FFB800; }
+    .info-block p { font-size: 14px; color: var(--text-body); margin: 0; max-width: none; }
+
+    /* ── Code / spec blocks ── */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: var(--code-bg);
+      color: var(--teal-lt);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .code-block {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 16px 0 24px;
+      color: var(--teal-lt);
+      line-height: 1.8;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .code-block .comment { color: #4A5F6E; }
+    .code-block .dir { color: var(--silver); }
+    .code-block .file { color: var(--teal-lt); }
+
+    /* ── Color swatches ── */
+    .swatch-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0 24px; }
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .swatch-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .swatch-info .sn { font-size: 13px; font-weight: 500; color: var(--white); }
+    .swatch-info .sv { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-mid); }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px;
+      font-size: 14px;
+    }
+    thead tr { border-bottom: 1px solid rgba(0,205,184,0.3); }
+    thead th {
+      text-align: left;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td {
+      padding: 12px 16px;
+      color: var(--text-body);
+      vertical-align: top;
+    }
+    tbody td:first-child { color: var(--white); font-weight: 500; }
+
+    /* ── List styles ── */
+    ul.req-list {
+      list-style: none;
+      margin: 8px 0 20px;
+      padding: 0;
+    }
+    ul.req-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-body);
+      padding: 6px 0;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+    ul.req-list li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    /* ── Page spec blocks ── */
+    .page-spec {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .page-spec-header {
+      background: var(--navy-lt);
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-spec-header .page-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+    }
+    .page-spec-header .page-file {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--teal);
+      background: rgba(0,205,184,0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .page-spec-body { padding: 20px 24px; }
+    .section-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .section-row:last-child { border-bottom: none; }
+    .sr-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--silver);
+      width: 160px;
+      flex-shrink: 0;
+    }
+    .sr-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; }
+
+    /* ── Phase tags ── */
+    .phase-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .ph1 { background: rgba(0,205,184,0.15); color: var(--teal); }
+    .ph2 { background: rgba(79,124,255,0.15); color: #8AAEFF; }
+    .ph3 { background: rgba(184,196,202,0.15); color: var(--silver); }
+    .ph4 { background: rgba(255,184,0,0.12); color: #FFD060; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 32px 24px; }
+      .two-col, .three-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="brand">Ai<span>Zen</span>Pay</div>
+    <div class="doc-title">Website TRD · v1.0</div>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Overview</div>
+    <a href="#s1" class="toc-link">1. Project Overview</a>
+    <a href="#s2" class="toc-link">2. Brand Identity</a>
+    <a href="#s3" class="toc-link">3. Design System</a>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Architecture</div>
+    <a href="#s4" class="toc-link">4. Site Architecture</a>
+    <a href="#s5" class="toc-link">5. File Structure</a>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Pages</div>
+    <a href="#s6" class="toc-link">6. Page Specifications</a>
+    <a href="#s7" class="toc-link">7. Components Library</a>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Technical</div>
+    <a href="#s8" class="toc-link">8. Technical Stack</a>
+    <a href="#s9" class="toc-link">9. Functional Requirements</a>
+    <a href="#s10" class="toc-link">10. SEO & Performance</a>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Roadmap</div>
+    <a href="#s11" class="toc-link">11. Content Guidelines</a>
+    <a href="#s12" class="toc-link">12. Phase Evolution</a>
+    <a href="#s13" class="toc-link">13. Compliance &amp; Legal</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main">
+
+  <!-- Doc Header -->
+  <div class="doc-header">
+    <div class="eyebrow">Technical Requirements Document</div>
+    <h1>AiZenPay<br/><span>Website Build Specification</span></h1>
+    <p class="subtitle">A complete requirements specification for Claude Code to generate the AiZenPay corporate website — Phase 1 (ISO Era). Plain HTML/CSS, hosted on Netlify. Designed to attract merchant sign-ups and establish operational credibility.</p>
+    <div class="meta-row">
+      <div class="meta-item"><span class="ml">Version</span><span class="mv">1.0 — Phase 1</span></div>
+      <div class="meta-item"><span class="ml">Date</span><span class="mv">April 2026</span></div>
+      <div class="meta-item"><span class="ml">Target Audience</span><span class="mv">Claude Code / VS Code</span></div>
+      <div class="meta-item"><span class="ml">Hosting</span><span class="mv">Netlify (Static HTML/CSS)</span></div>
+      <div class="meta-item"><span class="ml">Primary Goal</span><span class="mv">Merchant Sign-Ups + ISO Credibility</span></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 1: Project Overview -->
+  <!-- ────────────────────────────────── -->
+  <div id="s1" class="section">
+    <div class="section-number">Section 01</div>
+    <h2>Project Overview</h2>
+
+    <p>AiZenPay is a next-generation AI-powered payment processing company. This website is the company's first public digital presence — Phase 1 of a multi-phase web strategy that will evolve as AiZenPay grows from ISO to Third-Party Processor (TPP) to full Dual-Rail Acquirer-Processor.</p>
+
+    <div class="info-block">
+      <div class="ib-title">Strategic Context — Phase 1</div>
+      <p>AiZenPay is currently operating as an ISO (Independent Sales Organization) under a confidential acquirer partnership. The website must position AiZenPay as a professional, credible payment processor — without advertising the ISO relationship. The site serves two simultaneous audiences: (1) merchants who need card processing services, and (2) the acquirer partner reviewing AiZenPay's operational readiness for ISO program approval.</p>
+    </div>
+
+    <h3>Primary Objectives</h3>
+    <ul class="req-list">
+      <li>Capture inbound merchant leads via prominent "Get Started" and "Apply Now" CTAs connected to a lead capture form</li>
+      <li>Establish AiZenPay as a legitimate, technology-forward payment processor — not a startup in stealth mode</li>
+      <li>Demonstrate operational readiness to the acquirer partner reviewing the ISO application</li>
+      <li>Build brand foundation (teal/silver/navy identity) that scales through all future phases</li>
+      <li>Plant strategic seeds for future capabilities (stablecoin, AiZenHub platform) without over-promising</li>
+    </ul>
+
+    <h3>What the Website Must NOT Do (Phase 1)</h3>
+    <div class="card warning">
+      <ul class="req-list">
+        <li>Do NOT mention the acquirer partner by name (confidential until ISO agreement is signed)</li>
+        <li>Do NOT claim to be a full Acquirer-Processor or claim direct card brand connections</li>
+        <li>Do NOT make specific stablecoin processing claims as current live capabilities — frame as "coming soon" or "AiZenHub roadmap"</li>
+        <li>Do NOT use language like "ISO" in merchant-facing copy — position as a payment processor, period</li>
+        <li>Do NOT publish specific ARR targets, funding amounts, or investor-level financial data</li>
+      </ul>
+    </div>
+
+    <h3>Target Audiences</h3>
+    <table>
+      <thead>
+        <tr><th>Audience</th><th>What They Need to See</th><th>Primary CTA</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SMB &amp; Enterprise Merchants</td>
+          <td>Reliable processing, competitive rates, fast onboarding, AI-powered approval optimization</td>
+          <td>Get Started / Apply Now</td>
+        </tr>
+        <tr>
+          <td>ISVs (Software Vendors)</td>
+          <td>API-first integration, PCI compliance shield, embedded payments revenue opportunity</td>
+          <td>Talk to a Partner</td>
+        </tr>
+        <tr>
+          <td>ISOs (Sales Organizations)</td>
+          <td>White-label capability, competitive residuals, fast merchant boarding</td>
+          <td>Become a Partner</td>
+        </tr>
+        <tr>
+          <td>Acquirer / Investor (secondary)</td>
+          <td>Professional presence, operational credibility, technology sophistication, team quality</td>
+          <td>About Us / Contact</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 2: Brand Identity -->
+  <!-- ────────────────────────────────── -->
+  <div id="s2" class="section">
+    <div class="section-number">Section 02</div>
+    <h2>Brand Identity</h2>
+
+    <h3>Logo</h3>
+    <p>The AiZenPay logo is a teal-and-silver interlocking diamond/shield mark on a dark navy background, with the wordmark "AiZenPay" in which "Ai" appears in teal and "ZenPay" in white. The logo file is provided as <code>AiZenPay_Logo_-_Teal_and_Silver_Design.png</code>.</p>
+
+    <div class="info-block">
+      <div class="ib-title">Logo Usage Rules</div>
+      <p>Always use on dark backgrounds (navy or near-black). Minimum width: 120px. Maintain aspect ratio. Do not apply color filters. Provide sufficient padding — minimum 16px clearance on all sides. Use the full-color version only; no monochrome variants without approval.</p>
+    </div>
+
+    <h3>Color Palette</h3>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-dot" style="background:#00CDB8;"></div>
+        <div class="swatch-info"><div class="sn">Teal Primary</div><div class="sv">#00CDB8</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-dot" style="background:#00EDD6;"></div>
+        <div class="swatch-info"><div class="sn">Teal Light</div><div class="sv">#00EDD6</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-dot" style="background:#B8C4CA; border:1px solid rgba(255,255,255,0.1)"></div>
+        <div class="swatch-info"><div class="sn">Silver</div><div class="sv">#B8C4CA</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-dot" style="background:#1C2340;"></div>
+        <div class="swatch-info"><div class="sn">Navy Base</div><div class="sv">#1C2340</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-dot" style="background:#131829;"></div>
+        <div class="swatch-info"><div class="sn">Navy Dark</div><div class="sv">#131829</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-dot" style="background:#252E50;"></div>
+        <div class="swatch-info"><div class="sn">Navy Light</div><div class="sv">#252E50</div></div>
+      </div>
+    </div>
+
+    <h3>Typography</h3>
+    <table>
+      <thead><tr><th>Role</th><th>Font</th><th>Weight</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td>Display / Hero Headlines</td><td>Syne (Google Fonts)</td><td>700, 800</td><td>Hero H1, Section H2</td></tr>
+        <tr><td>Section Headlines</td><td>Syne</td><td>600, 700</td><td>H3, Card titles</td></tr>
+        <tr><td>Body Copy</td><td>DM Sans (Google Fonts)</td><td>300, 400, 500</td><td>All paragraphs, nav, CTAs</td></tr>
+        <tr><td>UI Labels / Badges</td><td>DM Sans</td><td>500, 600</td><td>Tags, pills, meta text</td></tr>
+        <tr><td>Code / Technical</td><td>JetBrains Mono</td><td>400</td><td>API references, code blocks</td></tr>
+      </tbody>
+    </table>
+    <p>Load fonts from Google Fonts CDN: <code>https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap</code></p>
+
+    <h3>Voice &amp; Tone</h3>
+    <ul class="req-list">
+      <li><strong>Confident, not boastful</strong> — let capabilities speak without superlative overload</li>
+      <li><strong>Technical precision with accessibility</strong> — merchants don't need jargon; ISVs need detail</li>
+      <li><strong>Forward-looking without over-promising</strong> — hint at the roadmap, don't claim it's live</li>
+      <li><strong>Professional enterprise tone</strong> — this is a B2B payments company, not a consumer app</li>
+      <li>Use "we" and "our" liberally; speak as a capable, experienced team</li>
+      <li>Avoid: "revolutionary," "disrupting," "game-changing" — show, don't hype</li>
+    </ul>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 3: Design System -->
+  <!-- ────────────────────────────────── -->
+  <div id="s3" class="section">
+    <div class="section-number">Section 03</div>
+    <h2>Design System</h2>
+
+    <h3>Overall Aesthetic</h3>
+    <p>Dark-mode first. Premium fintech / enterprise SaaS feel. Clean, spacious, confident. Think: Stripe meets a high-end cybersecurity firm. The teal accent pops against the deep navy backgrounds. Silver provides a metallic sophistication. No gradients on white — this is a dark, polished environment.</p>
+
+    <h3>CSS Variables (Root Tokens)</h3>
+    <div class="code-block"><span class="comment">/* styles/tokens.css — Apply these across all pages */</span>
+:root {
+  <span class="comment">/* Colors */</span>
+  --c-teal:        #00CDB8;
+  --c-teal-lt:     #00EDD6;
+  --c-teal-dim:    rgba(0, 205, 184, 0.12);
+  --c-silver:      #B8C4CA;
+  --c-navy-dk:     #131829;
+  --c-navy:        #1C2340;
+  --c-navy-lt:     #252E50;
+  --c-navy-mid:    #1E2845;
+  --c-white:       #FFFFFF;
+  --c-text-body:   #C8D4DC;
+  --c-text-mid:    #8A9AB0;
+  --c-border:      rgba(255, 255, 255, 0.08);
+  --c-border-teal: rgba(0, 205, 184, 0.22);
+
+  <span class="comment">/* Typography */</span>
+  --f-display:   'Syne', sans-serif;
+  --f-body:      'DM Sans', sans-serif;
+  --f-mono:      'JetBrains Mono', monospace;
+
+  <span class="comment">/* Spacing */</span>
+  --space-xs:    8px;
+  --space-sm:    16px;
+  --space-md:    24px;
+  --space-lg:    40px;
+  --space-xl:    64px;
+  --space-2xl:   96px;
+
+  <span class="comment">/* Border Radius */</span>
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-pill: 100px;
+
+  <span class="comment">/* Shadows */</span>
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 32px rgba(0,205,184,0.15);
+
+  <span class="comment">/* Transitions */</span>
+  --transition: 0.2s ease;
+}
+</div>
+
+    <h3>Component Styling Rules</h3>
+
+    <h4>Navbar</h4>
+    <ul class="req-list">
+      <li>Fixed position, full width, <code>background: rgba(19,24,41,0.92)</code> with <code>backdrop-filter: blur(16px)</code></li>
+      <li>Height: 72px. Logo left. Nav links center. CTA button right.</li>
+      <li>Nav links: 14px DM Sans 500, color <code>var(--c-text-mid)</code>, hover <code>var(--c-white)</code></li>
+      <li>CTA Button: teal background, white text, border-radius pill, 14px font, 12px/28px padding</li>
+      <li>Mobile: hamburger menu at 768px breakpoint, slide-in drawer from right</li>
+    </ul>
+
+    <h4>Hero Section</h4>
+    <ul class="req-list">
+      <li>Full viewport height (100vh) or minimum 640px</li>
+      <li>Background: dark navy with subtle mesh gradient and very faint geometric grid pattern using CSS</li>
+      <li>H1: Syne 800, 56–72px on desktop, 36px mobile. Max-width 700px.</li>
+      <li>Subheadline: DM Sans 300, 18–20px, color <code>var(--c-text-body)</code></li>
+      <li>Two CTAs: Primary (teal filled button) + Secondary (outline/ghost button)</li>
+      <li>Trust bar below CTAs: 3–4 credibility badges (PCI DSS Level 1, AI-Powered, 48-Hour Onboarding, 750+ TPS)</li>
+    </ul>
+
+    <h4>Cards / Feature Blocks</h4>
+    <ul class="req-list">
+      <li>Background: <code>var(--c-navy-lt)</code>, border: <code>1px solid var(--c-border)</code>, border-radius: <code>var(--radius-lg)</code></li>
+      <li>Top accent line on hover: <code>3px solid var(--c-teal)</code></li>
+      <li>Padding: 32px. Box shadow: <code>var(--shadow-card)</code></li>
+      <li>Transition: smooth lift (translateY -3px) on hover</li>
+    </ul>
+
+    <h4>Buttons</h4>
+    <table>
+      <thead><tr><th>Type</th><th>Style</th><th>Use Case</th></tr></thead>
+      <tbody>
+        <tr><td>Primary</td><td>BG: <code>var(--c-teal)</code>, Text: <code>#0A1220</code>, bold, pill radius</td><td>Main CTAs (Get Started, Apply Now)</td></tr>
+        <tr><td>Secondary</td><td>Border: <code>var(--c-border-teal)</code>, Text: <code>var(--c-teal)</code>, transparent BG</td><td>Secondary actions</td></tr>
+        <tr><td>Ghost</td><td>Text: <code>var(--c-text-body)</code>, no border, underline on hover</td><td>Tertiary links</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Section Layout</h4>
+    <ul class="req-list">
+      <li>Max content width: <code>1200px</code>, centered with auto margins</li>
+      <li>Section padding: <code>96px 0</code> desktop, <code>64px 0</code> mobile</li>
+      <li>Section eyebrow label above H2: 11px, 3px letter-spacing, uppercase, teal color</li>
+      <li>Alternating section backgrounds: <code>var(--c-navy-dk)</code> and <code>var(--c-navy)</code></li>
+    </ul>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 4: Site Architecture -->
+  <!-- ────────────────────────────────── -->
+  <div id="s4" class="section">
+    <div class="section-number">Section 04</div>
+    <h2>Site Architecture — Phase 1</h2>
+
+    <table>
+      <thead><tr><th>Page</th><th>File</th><th>Purpose</th><th>Primary CTA</th></tr></thead>
+      <tbody>
+        <tr><td>Home</td><td><code>index.html</code></td><td>Brand entry point, merchant value prop, social proof</td><td>Get Started</td></tr>
+        <tr><td>Products</td><td><code>products.html</code></td><td>CP + CNP processing detail, feature overview</td><td>Apply Now</td></tr>
+        <tr><td>Why AiZenPay</td><td><code>why-aizenpay.html</code></td><td>Differentiators vs legacy processors</td><td>Schedule a Demo</td></tr>
+        <tr><td>About Us</td><td><code>about.html</code></td><td>Team bios, company story, vision/mission</td><td>Contact Us</td></tr>
+        <tr><td>Partners</td><td><code>partners.html</code></td><td>ISO/ISV partner program overview</td><td>Become a Partner</td></tr>
+        <tr><td>Get Started</td><td><code>get-started.html</code></td><td>Merchant application form (lead capture)</td><td>Submit Application</td></tr>
+        <tr><td>Contact</td><td><code>contact.html</code></td><td>General contact + support inquiry form</td><td>Send Message</td></tr>
+        <tr><td>Privacy Policy</td><td><code>privacy.html</code></td><td>Legal — required for form submissions</td><td>—</td></tr>
+        <tr><td>Terms of Service</td><td><code>terms.html</code></td><td>Legal — required for form submissions</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Navigation Structure</h3>
+    <div class="code-block"><span class="comment"><!-- Primary Navigation --></span>
+Navbar Left:   [AiZenPay Logo]
+Navbar Center: Products | Why AiZenPay | About | Partners
+Navbar Right:  [Get Started →] (teal button)
+
+<span class="comment"><!-- Footer Navigation --></span>
+Column 1: AiZenPay (Logo + tagline + social links)
+Column 2: Products → Card-Present, Card-Not-Present, AiZenHub (coming soon)
+Column 3: Company → About Us, Why AiZenPay, Partners, Careers
+Column 4: Legal → Privacy Policy, Terms of Service, PCI Compliance
+Bottom:   © 2026 AiZenPay Inc. | "Payments Engineered for What's Next"
+</div>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 5: File Structure -->
+  <!-- ────────────────────────────────── -->
+  <div id="s5" class="section">
+    <div class="section-number">Section 05</div>
+    <h2>File &amp; Folder Structure</h2>
+
+    <div class="code-block"><span class="dir">aizenpay-website/</span>
+├── <span class="dir">index.html</span>
+├── <span class="dir">products.html</span>
+├── <span class="dir">why-aizenpay.html</span>
+├── <span class="dir">about.html</span>
+├── <span class="dir">partners.html</span>
+├── <span class="dir">get-started.html</span>
+├── <span class="dir">contact.html</span>
+├── <span class="dir">privacy.html</span>
+├── <span class="dir">terms.html</span>
+│
+├── <span class="dir">styles/</span>
+│   ├── <span class="file">tokens.css</span>          <span class="comment"># CSS variables, root tokens</span>
+│   ├── <span class="file">base.css</span>            <span class="comment"># Reset, body, typography scale</span>
+│   ├── <span class="file">components.css</span>      <span class="comment"># Navbar, buttons, cards, forms</span>
+│   ├── <span class="file">layout.css</span>          <span class="comment"># Grid, sections, containers</span>
+│   └── <span class="file">animations.css</span>      <span class="comment"># Scroll reveal, hover transitions</span>
+│
+├── <span class="dir">scripts/</span>
+│   ├── <span class="file">main.js</span>             <span class="comment"># Nav toggle, scroll behavior, CTA tracking</span>
+│   ├── <span class="file">form-handler.js</span>     <span class="comment"># Lead form validation + Netlify Forms</span>
+│   └── <span class="file">animations.js</span>       <span class="comment"># Intersection Observer for reveal effects</span>
+│
+├── <span class="dir">images/</span>
+│   ├── <span class="file">logo.png</span>            <span class="comment"># AiZenPay_Logo_-_Teal_and_Silver_Design.png</span>
+│   ├── <span class="file">logo-small.svg</span>      <span class="comment"># Icon-only version for favicon</span>
+│   ├── <span class="file">favicon.png</span>
+│   └── <span class="dir">icons/</span>              <span class="comment"># SVG icons (no external icon libraries)</span>
+│
+├── <span class="file">netlify.toml</span>            <span class="comment"># Netlify config, redirects, form handling</span>
+└── <span class="file">_redirects</span>              <span class="comment"># 404 → /index.html for SPA-style routing</span>
+</div>
+
+    <h3>Netlify Configuration</h3>
+    <div class="code-block"><span class="comment"># netlify.toml</span>
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; script-src 'self'"
+
+[[redirects]]
+  from = "/404"
+  to = "/index.html"
+  status = 200
+</div>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 6: Page Specifications -->
+  <!-- ────────────────────────────────── -->
+  <div id="s6" class="section">
+    <div class="section-number">Section 06</div>
+    <h2>Page-by-Page Specifications</h2>
+
+    <!-- HOME -->
+    <div class="page-spec">
+      <div class="page-spec-header">
+        <span class="page-name">🏠 Home Page</span>
+        <span class="page-file">index.html</span>
+      </div>
+      <div class="page-spec-body">
+
+        <div class="section-row">
+          <div class="sr-name">Hero Section</div>
+          <div class="sr-desc">
+            <strong>Eyebrow:</strong> "AI-Powered Payment Processing"<br/>
+            <strong>H1:</strong> "Accept Payments with Intelligence."<br/>
+            <strong>Sub:</strong> "AI-optimized card processing that maximizes approvals, reduces costs, and gets merchants live in 48 hours. Built for businesses that demand more."<br/>
+            <strong>CTA Row:</strong> [Get Started →] (primary teal) &nbsp; [See How It Works] (secondary outline)<br/>
+            <strong>Trust Bar (below CTA):</strong> 4 badges — PCI DSS Level 1 · AI-Powered Routing · 48-Hr Onboarding · 750+ TPS Capacity<br/>
+            <strong>Background:</strong> Dark navy (#131829) with faint geometric mesh pattern (CSS-only, teal opacity 0.03)
+          </div>
+        </div>
+
+        <div class="section-row">
+          <div class="sr-name">Value Pillars (3-col)</div>
+          <div class="sr-desc">
+            <strong>Card 1 — Higher Approvals:</strong> AI routing engine analyzes each transaction in real time to maximize authorization rates across acquiring banks and networks.<br/>
+            <strong>Card 2 — Lower Costs:</strong> Intelligent interchange optimization and smart BIN routing reduce your effective processing rate.<br/>
+            <strong>Card 3 — Faster Settlement:</strong> Next-business-day settlement with accelerated options. No mystery float periods.
+          </div>
+        </div>
+
+        <div class="section-row">
+          <div class="sr-name">Products Overview</div>
+          <div class="sr-desc">
+            2-column layout. Brief product cards:<br/>
+            <strong>Card-Present Processing:</strong> EMV chip, tap-to-pay, swipe, mobile POS. Full in-store payment acceptance with enterprise-grade security.<br/>
+            <strong>Card-Not-Present Processing:</strong> eCommerce gateway, virtual terminal, recurring billing, hosted payment pages. Sell everywhere your customers are.<br/>
+            <strong>AiZenHub Platform (tease only):</strong> "Something bigger is coming. AiZenHub — our Dual-Rail AI payments platform. Card + stablecoin. One engine." [Learn More → coming soon badge]
+          </div>
+        </div>
+
+        <div class="section-row">
+          <div class="sr-name">Why AiZenPay Strip</div>
+          <div class="sr-desc">
+            4 horizontal stat/differentiator blocks with large numbers:<br/>
+            750+ TPS · PCI DSS Level 1 · 48-Hour Onboarding · 99.95% Uptime SLA
+          </div>
+        </div>
+
+        <div class="section-row">
+          <div class="sr-name">Industries Section</div>
+          <div class="sr-desc">
+            "Specialized for High-Value Verticals" — Grid of 6 industry icons:<br/>
+            Healthcare &amp; Medical · SaaS Platforms · Professional Services · B2B Marketplaces · Nonprofits · eCommerce
+          </div>
+        </div>
+
+        <div class="section-row">
+          <div class="sr-name">CTA Banner</div>
+          <div class="sr-desc">
+            Full-width dark section. H2: "Ready to upgrade your payment processing?" Sub: "Join merchants who are already processing smarter." [Start Your Application →] (large teal button)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="page-spec">
+      <div class="page-spec-header">
+        <span class="page-name">💳 Products Page</span>
+        <span class="page-file">products.html</span>
+      </div>
+      <div class="page-spec-body">
+        <div class="section-row">
+          <div class="sr-name">Hero</div>
+          <div class="sr-desc">H1: "Full-Stack Payment Processing — Card Present to Card Not Present." Sub: "One platform. Every payment type. AI intelligence built in."</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Card-Present (CP)</div>
+          <div class="sr-desc">EMV chip &amp; PIN · NFC/Contactless (Apple Pay, Google Pay) · Magnetic stripe fallback · Mobile POS compatibility · Terminal-agnostic architecture · Real-time authorization with AI risk scoring</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Card-Not-Present (CNP)</div>
+          <div class="sr-desc">eCommerce payment gateway · Virtual terminal (MOTO) · Hosted payment pages · API-first integration · Recurring billing &amp; subscription management · 3DS2 fraud protection · Tokenization &amp; encrypted vault</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">AiZenHub Teaser</div>
+          <div class="sr-desc">"The Future of Payments — AiZenHub Platform (Coming Q3 2026)." Brief description of Dual-Rail concept. "Fiat + stablecoin settlement. One engine. Zero friction." [Join the Waitlist] button linked to a simple email capture form.</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">AI Features</div>
+          <div class="sr-desc">Real-time risk scoring · Authorization routing optimization · Chargeback prediction &amp; suppression · Behavioral anomaly detection · Fee reduction models</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Security &amp; Compliance</div>
+          <div class="sr-desc">PCI DSS Level 1 · Network tokenization · End-to-end encryption · SOC 2 Type II (roadmap) · EMV 3DS compliance</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHY AIZENPAY -->
+    <div class="page-spec">
+      <div class="page-spec-header">
+        <span class="page-name">⚡ Why AiZenPay</span>
+        <span class="page-file">why-aizenpay.html</span>
+      </div>
+      <div class="page-spec-body">
+        <div class="section-row">
+          <div class="sr-name">Hero</div>
+          <div class="sr-desc">H1: "Not Just a Processor. An Intelligent Payment Partner." Sub: "Legacy processors were built for the last decade. We built AiZenPay for this one."</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Comparison Table</div>
+          <div class="sr-desc">AiZenPay vs. Legacy Processors (no names — "Traditional Processors"). Rows: AI Routing, Onboarding Speed, Stablecoin Readiness, PCI Shield for Partners, Interchange Optimization, Dedicated Support. AiZenPay = ✓ checkmarks throughout.</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">6 Differentiators</div>
+          <div class="sr-desc">Icon + title + 2-line desc for: AI-First · 48-Hour Onboarding · PCI Compliance Shield · Cost Optimization · Vertical Expertise · Future-Ready Rails</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="page-spec">
+      <div class="page-spec-header">
+        <span class="page-name">👥 About Us</span>
+        <span class="page-file">about.html</span>
+      </div>
+      <div class="page-spec-body">
+        <div class="section-row">
+          <div class="sr-name">Hero</div>
+          <div class="sr-desc">H1: "Built by Payment Veterans. Architected for What's Next." Company founding narrative — 2 short paragraphs on the team's background and why AiZenPay was founded.</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Vision &amp; Mission</div>
+          <div class="sr-desc">
+            <strong>Vision:</strong> "To be America's most trusted AI-powered payment processor — the bridge between today's card networks and tomorrow's digital economy."<br/>
+            <strong>Mission:</strong> "Optimize authorization. Reduce cost. Expand acceptance."
+          </div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Leadership Team</div>
+          <div class="sr-desc">
+            3-column cards. Each with: Photo placeholder (avatar with initials) · Name · Title · 3-sentence bio.<br/>
+            <strong>Naganand Jagadeesh</strong> — CEO &amp; Head of Business Strategy. Payment processing industry veteran. Responsible for company vision, market strategy, and investor relations.<br/>
+            <strong>Brian Newshel</strong> — CTO &amp; Head of Technology. Platform architecture and engineering leadership. Expert in payment switch systems, compliance infrastructure, and AI-driven payment intelligence.<br/>
+            <strong>Ray Mario</strong> — VP Sales &amp; Business Development. Revenue generation and partner channel development. Focused on merchant acquisition, ISO/ISV partnerships, and commercial scaling.
+          </div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Company Values</div>
+          <div class="sr-desc">4 values grid: Smart · Frictionless · Secure · Scalable (with 1-line desc each)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GET STARTED -->
+    <div class="page-spec">
+      <div class="page-spec-header">
+        <span class="page-name">📋 Get Started (Merchant Application)</span>
+        <span class="page-file">get-started.html</span>
+      </div>
+      <div class="page-spec-body">
+        <div class="section-row">
+          <div class="sr-name">Hero</div>
+          <div class="sr-desc">H1: "Start Accepting Payments in 48 Hours." Sub: "Tell us about your business and a payments expert will contact you within one business day."</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Form Fields</div>
+          <div class="sr-desc">
+            <strong>Business Information:</strong> Business Legal Name* · DBA / Trade Name · Business Type (dropdown: LLC, Corp, Sole Prop, Partnership, Nonprofit) · Business Category / Vertical (dropdown: Healthcare, SaaS/Software, Professional Services, Retail, eCommerce, B2B Marketplace, Nonprofit, Other)<br/>
+            <strong>Processing Profile:</strong> Estimated Monthly Processing Volume (dropdown: Under $10K, $10K–$50K, $50K–$250K, $250K–$1M, $1M+) · Transaction Type (checkboxes: Card-Present, Card-Not-Present, Both)<br/>
+            <strong>Contact Information:</strong> First Name* · Last Name* · Title / Role · Email Address* · Phone Number* · Business Website<br/>
+            <strong>Additional:</strong> How did you hear about AiZenPay? (dropdown) · Comments / Additional Info (textarea)<br/>
+            <strong>Consent:</strong> Checkbox: "I agree to AiZenPay's Privacy Policy and Terms of Service" (required)
+          </div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Form Behavior</div>
+          <div class="sr-desc">Submit via Netlify Forms (no backend required). <code>data-netlify="true"</code> attribute on form element. Success message displayed inline: "Thank you! A payments specialist will reach out within 1 business day." Email notification to <code>info@aizenpay.com</code> (placeholder — configure in Netlify dashboard). Form validation: required fields marked, email format validation, phone format validation.</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Side Panel</div>
+          <div class="sr-desc">Right column (on desktop, 2-col layout) showing: "What Happens Next" 3-step list (Application Review → Underwriting → Go Live) + 3 trust badges + contact info</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTNERS -->
+    <div class="page-spec">
+      <div class="page-spec-header">
+        <span class="page-name">🤝 Partners Page</span>
+        <span class="page-file">partners.html</span>
+      </div>
+      <div class="page-spec-body">
+        <div class="section-row">
+          <div class="sr-name">Hero</div>
+          <div class="sr-desc">H1: "Grow Your Revenue. We Handle the Complexity." Sub: "Whether you're an ISV embedding payments or an ISO building a book of business, AiZenPay has a partner program for you."</div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Partner Types</div>
+          <div class="sr-desc">
+            <strong>ISV Partners:</strong> Embed payments into your software. Revenue share. PCI compliance shield. 48-hour integration via REST APIs. [Become an ISV Partner]<br/>
+            <strong>ISO Partners:</strong> White-label payment processing. Competitive residuals. Automated underwriting. Portfolio migration support. [Become an ISO Partner]
+          </div>
+        </div>
+        <div class="section-row">
+          <div class="sr-name">Partner CTA</div>
+          <div class="sr-desc">Simple contact form: Name · Company · Email · Partner Type (dropdown) · Message. Submit via Netlify Forms.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 7: Components Library -->
+  <!-- ────────────────────────────────── -->
+  <div id="s7" class="section">
+    <div class="section-number">Section 07</div>
+    <h2>Reusable Components</h2>
+    <p>The following HTML/CSS components must be created as reusable includes or copy-paste patterns used across all pages:</p>
+
+    <table>
+      <thead><tr><th>Component</th><th>Used On</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>navbar.html</code></td><td>All pages</td><td>Fixed, glassy. Logo + nav links + CTA. Hamburger on mobile.</td></tr>
+        <tr><td><code>footer.html</code></td><td>All pages</td><td>4-column + bottom bar. Dark navy, teal links on hover.</td></tr>
+        <tr><td><code>.hero-section</code></td><td>All pages</td><td>Eyebrow + H1 + Sub + CTAs + optional trust bar</td></tr>
+        <tr><td><code>.feature-card</code></td><td>Products, Why</td><td>Icon + title + body. Hover lift + teal top border.</td></tr>
+        <tr><td><code>.stat-block</code></td><td>Home, Why</td><td>Large number + label. Teal number, silver label.</td></tr>
+        <tr><td><code>.badge</code></td><td>Multiple</td><td>Pill shape. Variants: teal, silver, amber. "Coming Soon" badge.</td></tr>
+        <tr><td><code>.form-field</code></td><td>Forms</td><td>Label + input/select/textarea. Dark bg, teal focus ring.</td></tr>
+        <tr><td><code>.cta-banner</code></td><td>All pages</td><td>Full-width teal-gradient-edged dark section with headline + button.</td></tr>
+        <tr><td><code>.team-card</code></td><td>About</td><td>Avatar initials circle + name + title + bio. Navy card.</td></tr>
+        <tr><td><code>.comparison-table</code></td><td>Why AiZenPay</td><td>AiZenPay vs Legacy columns. Teal checkmarks, red/gray for competitor.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 8: Technical Stack -->
+  <!-- ────────────────────────────────── -->
+  <div id="s8" class="section">
+    <div class="section-number">Section 08</div>
+    <h2>Technical Stack</h2>
+
+    <div class="two-col">
+      <div class="card">
+        <h4>Phase 1 Stack (Current)</h4>
+        <ul class="req-list">
+          <li><strong>HTML5</strong> — Semantic markup, ARIA attributes</li>
+          <li><strong>CSS3</strong> — Custom properties, Grid, Flexbox, no frameworks</li>
+          <li><strong>Vanilla JavaScript</strong> — ES6+, no jQuery, no build step required</li>
+          <li><strong>Google Fonts CDN</strong> — Syne + DM Sans</li>
+          <li><strong>Netlify Forms</strong> — Zero-backend form handling</li>
+          <li><strong>Netlify Hosting</strong> — Auto-deploy from GitHub repo</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Phase 2 Migration Path (6-12 months)</h4>
+        <ul class="req-list">
+          <li><strong>Next.js 14+</strong> — App Router, SSG/ISR</li>
+          <li><strong>React 18</strong> — Component library</li>
+          <li><strong>Tailwind CSS</strong> — Utility-first with custom tokens</li>
+          <li><strong>Contentful or Sanity</strong> — CMS for blog/content</li>
+          <li><strong>HubSpot Forms SDK</strong> — CRM-connected forms</li>
+          <li><strong>Vercel or Netlify</strong> — CI/CD deployment</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>No External Dependencies (Phase 1)</h3>
+    <p>The Phase 1 build must have zero npm dependencies and require no build process. All CSS and JS files are served directly. This ensures Netlify drop-folder deployment works with no configuration, and the site loads fast without a build pipeline.</p>
+
+    <h3>Browser Support</h3>
+    <ul class="req-list">
+      <li>Chrome, Firefox, Safari, Edge — last 2 major versions</li>
+      <li>Mobile: iOS Safari 15+, Android Chrome 100+</li>
+      <li>No IE11 support required</li>
+    </ul>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 9: Functional Requirements -->
+  <!-- ────────────────────────────────── -->
+  <div id="s9" class="section">
+    <div class="section-number">Section 09</div>
+    <h2>Functional Requirements</h2>
+
+    <h3>Navigation</h3>
+    <ul class="req-list">
+      <li>Fixed navbar with transparency + blur on scroll (JavaScript scroll listener)</li>
+      <li>Active state on current page nav link</li>
+      <li>Smooth scroll for in-page anchor links</li>
+      <li>Mobile hamburger: slide-in nav drawer, close on outside click or ESC key</li>
+    </ul>
+
+    <h3>Forms (Netlify)</h3>
+    <ul class="req-list">
+      <li>All forms use <code>data-netlify="true"</code> for zero-config form handling</li>
+      <li>Add hidden input: <code>&lt;input type="hidden" name="form-name" value="merchant-application"&gt;</code></li>
+      <li>Client-side validation before submit (required fields, email regex, phone regex)</li>
+      <li>Show inline error messages (red border + error text) on invalid submit</li>
+      <li>On success: replace form with thank-you message in same container (no page reload)</li>
+      <li>Honeypot spam field: <code>&lt;input name="bot-field" style="display:none"&gt;</code></li>
+    </ul>
+
+    <h3>Scroll Animations</h3>
+    <ul class="req-list">
+      <li>Use <code>IntersectionObserver</code> to add <code>.visible</code> class when elements enter viewport</li>
+      <li>Animate: feature cards (fade up + stagger), stat blocks (count-up number animation), section heroes (fade in)</li>
+      <li>Respect <code>prefers-reduced-motion</code> — skip animations if user has this set</li>
+    </ul>
+
+    <h3>Responsive Breakpoints</h3>
+    <table>
+      <thead><tr><th>Breakpoint</th><th>Width</th><th>Key Changes</th></tr></thead>
+      <tbody>
+        <tr><td>Mobile</td><td>&lt; 640px</td><td>Single column, hamburger nav, hero text 32px</td></tr>
+        <tr><td>Tablet</td><td>640px – 1024px</td><td>2-col grids, smaller hero</td></tr>
+        <tr><td>Desktop</td><td>&gt; 1024px</td><td>Full 3-col grids, sidebar nav</td></tr>
+        <tr><td>Wide</td><td>&gt; 1400px</td><td>Max-width container, no change</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Social Links (Footer)</h3>
+    <p>LinkedIn, X (Twitter), YouTube. Use SVG icons inline. Link to <code>#</code> placeholders in Phase 1 — replace when accounts are live. Note in code comments: <code>&lt;!-- TODO: Replace with live social URLs --&gt;</code></p>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 10: SEO & Performance -->
+  <!-- ────────────────────────────────── -->
+  <div id="s10" class="section">
+    <div class="section-number">Section 10</div>
+    <h2>SEO &amp; Performance</h2>
+
+    <h3>Meta Tags (Each Page)</h3>
+    <div class="code-block"><span class="comment">&lt;!-- Required on every page --&gt;</span>
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="[Page-specific 150-char description]"&gt;
+&lt;meta name="robots" content="index, follow"&gt;
+&lt;link rel="canonical" href="https://aizenpay.com/[page]"&gt;
+
+<span class="comment">&lt;!-- Open Graph --&gt;</span>
+&lt;meta property="og:title" content="[Page Title] | AiZenPay"&gt;
+&lt;meta property="og:description" content="[Description]"&gt;
+&lt;meta property="og:image" content="https://aizenpay.com/images/og-default.png"&gt;
+&lt;meta property="og:url" content="https://aizenpay.com/[page]"&gt;
+&lt;meta property="og:type" content="website"&gt;
+
+<span class="comment">&lt;!-- Twitter Card --&gt;</span>
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:site" content="@AiZenPay"&gt;
+</div>
+
+    <h3>Page-Specific Title Tags</h3>
+    <table>
+      <thead><tr><th>Page</th><th>Title Tag</th></tr></thead>
+      <tbody>
+        <tr><td>Home</td><td>AiZenPay — AI-Powered Payment Processing</td></tr>
+        <tr><td>Products</td><td>Payment Processing Solutions — Card Present &amp; CNP | AiZenPay</td></tr>
+        <tr><td>Why AiZenPay</td><td>Why Choose AiZenPay — Smarter, Faster Processing</td></tr>
+        <tr><td>About</td><td>About AiZenPay — Our Team &amp; Story</td></tr>
+        <tr><td>Partners</td><td>ISO &amp; ISV Partner Program | AiZenPay</td></tr>
+        <tr><td>Get Started</td><td>Get Started with AiZenPay — Merchant Application</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Performance Targets</h3>
+    <ul class="req-list">
+      <li>Lighthouse score: 90+ on Performance, Accessibility, Best Practices, SEO</li>
+      <li>First Contentful Paint: &lt; 1.5s on desktop / &lt; 2.5s on mobile</li>
+      <li>No render-blocking scripts — all JS at bottom of <code>&lt;body&gt;</code> with <code>defer</code></li>
+      <li>Images: provide <code>width</code> and <code>height</code> attributes to prevent layout shift</li>
+      <li>Google Fonts loaded with <code>rel="preconnect"</code> and <code>display=swap</code></li>
+      <li>No external CSS frameworks (Bootstrap, Tailwind CDN) — pure custom CSS only</li>
+    </ul>
+
+    <h3>Accessibility</h3>
+    <ul class="req-list">
+      <li>All images: descriptive <code>alt</code> text</li>
+      <li>All interactive elements: keyboard focusable, visible focus ring (<code>outline: 2px solid var(--c-teal)</code>)</li>
+      <li>Color contrast: minimum 4.5:1 for body text, 3:1 for large text</li>
+      <li>Form labels: all inputs have associated <code>&lt;label&gt;</code> elements</li>
+      <li>Landmark roles: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code></li>
+      <li>Skip-to-content link at top of page for screen readers</li>
+    </ul>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 11: Content Guidelines -->
+  <!-- ────────────────────────────────── -->
+  <div id="s11" class="section">
+    <div class="section-number">Section 11</div>
+    <h2>Content Guidelines &amp; Messaging</h2>
+
+    <h3>Approved Claims (Phase 1)</h3>
+    <ul class="req-list">
+      <li>"AI-powered payment processing" — true, core product feature</li>
+      <li>"750+ TPS processing capacity" — from technical specs</li>
+      <li>"PCI DSS Level 1 compliance" — use "PCI DSS Level 1 compliant infrastructure"</li>
+      <li>"48-hour merchant onboarding" — confirmed in business plan</li>
+      <li>"Card-Present and Card-Not-Present transaction processing" — core product</li>
+      <li>"99.95% uptime SLA" — stated operational target</li>
+      <li>"EMV-compliant processing" — confirmed</li>
+      <li>"AI-driven authorization routing and fraud detection" — confirmed Falcon/Kount integration</li>
+    </ul>
+
+    <h3>Claims Requiring Future-State Language</h3>
+    <div class="info-block amber">
+      <div class="ib-title">Use "Coming Soon" or "On Our Roadmap" for These</div>
+      <p>Stablecoin processing (USDC/USDT/USDP) · AiZenHub Dual-Rail platform · Direct card brand interfaces (Visa/MC/DISC/AMEX) · Sponsor bank BIN issuance · International/cross-border processing · SOC 2 Type II certification</p>
+    </div>
+
+    <h3>Prohibited Language (Phase 1)</h3>
+    <ul class="req-list">
+      <li>Do NOT name the acquiring bank partner</li>
+      <li>Do NOT use "ISO" in any merchant-facing copy</li>
+      <li>Do NOT claim "direct acquiring" or "direct card brand relationships"</li>
+      <li>Do NOT cite specific ARR figures or investor metrics publicly</li>
+      <li>Do NOT make regulatory claims beyond what is currently certified</li>
+    </ul>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 12: Phase Evolution Plan -->
+  <!-- ────────────────────────────────── -->
+  <div id="s12" class="section">
+    <div class="section-number">Section 12</div>
+    <h2>Phase Evolution — Website Roadmap</h2>
+    <p>The website is designed to grow with AiZenPay. Each phase unlocks new content, pages, and messaging. Placeholders and "Coming Soon" elements in Phase 1 will be activated in later phases.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Milestone</th>
+          <th>Website Updates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="phase-tag ph1">Phase 1</span> Now–Month 6</td>
+          <td>ISO agreement signed. First merchants live.</td>
+          <td>Current build. Merchant-focused. AiZenHub "coming soon" teaser. Static HTML/CSS on Netlify.</td>
+        </tr>
+        <tr>
+          <td><span class="phase-tag ph2">Phase 2</span> Month 6–12</td>
+          <td>ISO → TPP migration. AiZenHub MVP live.</td>
+          <td>Add AiZenHub product page. Developer portal / API docs section. HubSpot CRM forms. Migrate to Next.js. Partner portal teaser. Blog/insights section for SEO.</td>
+        </tr>
+        <tr>
+          <td><span class="phase-tag ph3">Phase 3</span> Month 12–18</td>
+          <td>Sponsor bank secured. Own BIN. Direct MID boarding.</td>
+          <td>Full AiZenHub platform page with feature details. Merchant self-service portal link. Activate stablecoin/AiZenHub messaging. Pricing page. Customer testimonials/case studies.</td>
+        </tr>
+        <tr>
+          <td><span class="phase-tag ph4">Phase 4</span> 18+ Months</td>
+          <td>Dual-Rail acquirer-processor. Investor/acquirer audience.</td>
+          <td>Full investor/acquirer section. Dual-Rail technology showcase. Market data / traction metrics. Press / media room. International capability announcements.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Code Structure for Phased Reveals</h3>
+    <p>In Phase 1 code, include commented-out blocks for future sections with clear labels so Claude Code (or any developer) can activate them without structural rewrites:</p>
+    <div class="code-block"><span class="comment">&lt;!-- PHASE 2: Uncomment when AiZenHub MVP is live --&gt;</span>
+<span class="comment">&lt;!--</span>
+<span class="comment">&lt;section class="aizenhub-platform"&gt;</span>
+<span class="comment">  ... AiZenHub full product section ...</span>
+<span class="comment">&lt;/section&gt;</span>
+<span class="comment">--&gt;</span>
+
+<span class="comment">&lt;!-- PHASE 3: Activate when BIN/sponsor bank secured --&gt;</span>
+<span class="comment">&lt;!--</span>
+<span class="comment">&lt;a href="/merchant-portal" class="btn-primary"&gt;Login to Portal&lt;/a&gt;</span>
+<span class="comment">--&gt;</span>
+</div>
+  </div>
+
+  <!-- ────────────────────────────────── -->
+  <!-- SECTION 13: Compliance & Legal -->
+  <!-- ────────────────────────────────── -->
+  <div id="s13" class="section">
+    <div class="section-number">Section 13</div>
+    <h2>Compliance &amp; Legal Requirements</h2>
+
+    <h3>Required Pages</h3>
+    <ul class="req-list">
+      <li><code>privacy.html</code> — Privacy Policy (required before any form captures contact data). Include: data collected, how used, CCPA compliance note, contact for opt-out.</li>
+      <li><code>terms.html</code> — Terms of Service. Standard website terms. Note: not payment processing merchant agreement — that is a separate document.</li>
+    </ul>
+
+    <h3>Footer Disclaimers</h3>
+    <p>Add to footer bottom bar: "AiZenPay Inc. is a registered payment processing company. PCI DSS Level 1 compliant infrastructure. All trademarks are property of their respective owners."</p>
+
+    <h3>Form Consent</h3>
+    <p>All lead capture forms must include a checkbox (required) linking to Privacy Policy and Terms of Service before submission is accepted.</p>
+
+    <h3>Cookie Notice</h3>
+    <p>Minimal cookie banner on first visit: "We use essential cookies to ensure this website works properly. <a>Learn more</a> [Accept]" — Store acceptance in <code>localStorage</code>. No tracking cookies in Phase 1.</p>
+
+    <div class="info-block">
+      <div class="ib-title">Important Note</div>
+      <p>Phase 1 has no payment processing functionality on the website itself. All processing is handled through AiZenPay's backend systems. The website is a marketing and lead generation platform only. No PCI scope applies to the website.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="margin-top:80px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+    <span style="font-size:13px; color:rgba(255,255,255,0.3);">AiZenPay Website TRD v1.0 · April 2026</span>
+    <span style="font-size:12px; color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:100px; padding:4px 14px; letter-spacing:1px; text-transform:uppercase;">Confidential · Internal Use Only</span>
+    <span style="font-size:13px; color:rgba(255,255,255,0.3);">Prepared by Lydia, AI Executive Assistant to Naga Jagadeesh</span>
+  </div>
+
+</main>
+
+</body>
+</html>

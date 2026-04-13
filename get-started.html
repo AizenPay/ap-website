@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started with AiZenPay — Merchant Application</title>
+  <meta name="description" content="Apply to start accepting payments with AiZenPay. Get live in 48 hours. Tell us about your business and a payments expert will contact you within one business day." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aizenpay.com/get-started.html" />
+  <meta property="og:title" content="Get Started with AiZenPay — Merchant Application" />
+  <meta property="og:description" content="Start accepting payments in 48 hours. Apply now." />
+  <meta property="og:image" content="https://aizenpay.com/images/og-default.png" />
+  <meta property="og:url" content="https://aizenpay.com/get-started.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@AiZenPay" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <div id="nav-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;opacity:0;transition:opacity 0.2s ease;"></div>
+  <style>#nav-overlay.visible { display:block !important; opacity:1; }</style>
+
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="navbar__inner">
+        <a href="index.html" class="navbar__logo" aria-label="AiZenPay Home">
+          <img src="images/logo.png" alt="AiZenPay" width="140" height="42" />
+        </a>
+        <div class="navbar__nav" role="menubar">
+          <a href="products.html"     class="navbar__link" role="menuitem">Products</a>
+          <a href="why-aizenpay.html" class="navbar__link" role="menuitem">Why AiZenPay</a>
+          <a href="about.html"        class="navbar__link" role="menuitem">About</a>
+          <a href="partners.html"     class="navbar__link" role="menuitem">Partners</a>
+        </div>
+        <div class="navbar__cta">
+          <a href="get-started.html" class="btn-primary">Get Started &rarr;</a>
+        </div>
+        <button class="navbar__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="navbar__drawer" id="mobile-drawer" role="dialog" aria-label="Mobile navigation">
+      <a href="products.html"     class="navbar__link">Products</a>
+      <a href="why-aizenpay.html" class="navbar__link">Why AiZenPay</a>
+      <a href="about.html"        class="navbar__link">About</a>
+      <a href="partners.html"     class="navbar__link">Partners</a>
+      <a href="get-started.html"  class="btn-primary" style="margin-top:20px;">Get Started &rarr;</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-body">
+
+    <!-- PAGE HEADER -->
+    <section class="section section--navy-dk" style="padding-bottom:0;" aria-labelledby="gs-heading">
+      <div class="container">
+        <div style="max-width:640px; padding-bottom:48px;">
+          <span class="eyebrow">Merchant Application</span>
+          <h1 id="gs-heading">Start Accepting Payments<br /><span class="text-teal">in 48 Hours.</span></h1>
+          <p style="font-size:17px;">Tell us about your business and a payments specialist will contact you within one business day to get you on your way.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM + SIDEBAR -->
+    <section class="section section--navy-dk" style="padding-top:0;" aria-label="Merchant application form">
+      <div class="container">
+        <div class="split-layout">
+
+          <!-- APPLICATION FORM -->
+          <div>
+            <div class="feature-card" style="padding:40px 44px;">
+
+              <!-- Success State -->
+              <div id="form-success" class="form-success">
+                <div class="form-success__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00CDB8" stroke-width="2" width="32" height="32"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Application Received!</h3>
+                <p>Thank you for your interest in AiZenPay. A payments specialist will reach out within 1 business day to discuss your account and next steps.</p>
+                <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--c-border);">
+                  <p style="font-size:13px; color:var(--c-text-mid);">Questions in the meantime? Email us at <a href="mailto:info@aizenpay.com">info@aizenpay.com</a></p>
+                </div>
+              </div>
+
+              <form
+                name="merchant-application"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                data-success-id="form-success"
+                novalidate
+                aria-label="Merchant application"
+              >
+                <input type="hidden" name="form-name" value="merchant-application" />
+                <input name="bot-field" style="display:none" tabindex="-1" aria-hidden="true" />
+
+                <!-- Section: Business Information -->
+                <fieldset style="border:none; padding:0; margin:0 0 32px;">
+                  <legend style="font-family:var(--f-display); font-weight:700; font-size:16px; color:var(--c-white); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--c-border); width:100%; display:block;">Business Information</legend>
+
+                  <div class="form-group">
+                    <label for="biz-legal-name">Business Legal Name <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="biz-legal-name" name="business_legal_name" class="form-field" required autocomplete="organization" placeholder="Acme Corp LLC" />
+                    <div class="form-error" role="alert"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="biz-dba">DBA / Trade Name</label>
+                    <input type="text" id="biz-dba" name="dba_name" class="form-field" placeholder="Acme (if different from legal name)" />
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="biz-type">Business Type <span class="required" aria-hidden="true">*</span></label>
+                      <select id="biz-type" name="business_type" class="form-field" required>
+                        <option value="" disabled selected>Select type…</option>
+                        <option value="llc">LLC</option>
+                        <option value="corp">Corporation (C or S Corp)</option>
+                        <option value="sole_prop">Sole Proprietorship</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="nonprofit">Nonprofit / 501(c)(3)</option>
+                      </select>
+                      <div class="form-error" role="alert"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="biz-vertical">Business Category <span class="required" aria-hidden="true">*</span></label>
+                      <select id="biz-vertical" name="business_vertical" class="form-field" required>
+                        <option value="" disabled selected>Select category…</option>
+                        <option value="healthcare">Healthcare &amp; Medical</option>
+                        <option value="saas">SaaS / Software</option>
+                        <option value="professional">Professional Services</option>
+                        <option value="retail">Retail</option>
+                        <option value="ecommerce">eCommerce</option>
+                        <option value="b2b_marketplace">B2B Marketplace</option>
+                        <option value="nonprofit">Nonprofit</option>
+                        <option value="other">Other</option>
+                      </select>
+                      <div class="form-error" role="alert"></div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <!-- Section: Processing Profile -->
+                <fieldset style="border:none; padding:0; margin:0 0 32px;">
+                  <legend style="font-family:var(--f-display); font-weight:700; font-size:16px; color:var(--c-white); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--c-border); width:100%; display:block;">Processing Profile</legend>
+
+                  <div class="form-group">
+                    <label for="monthly-volume">Estimated Monthly Processing Volume <span class="required" aria-hidden="true">*</span></label>
+                    <select id="monthly-volume" name="monthly_volume" class="form-field" required>
+                      <option value="" disabled selected>Select range…</option>
+                      <option value="under_10k">Under $10,000</option>
+                      <option value="10k_50k">$10,000 – $50,000</option>
+                      <option value="50k_250k">$50,000 – $250,000</option>
+                      <option value="250k_1m">$250,000 – $1,000,000</option>
+                      <option value="over_1m">$1,000,000+</option>
+                    </select>
+                    <div class="form-error" role="alert"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Transaction Types Needed <span class="required" aria-hidden="true">*</span></label>
+                    <div class="checkbox-group">
+                      <label class="checkbox-label">
+                        <input type="checkbox" name="transaction_types" value="card_present" />
+                        Card-Present (in-store, POS, terminal)
+                      </label>
+                      <label class="checkbox-label">
+                        <input type="checkbox" name="transaction_types" value="card_not_present" />
+                        Card-Not-Present (online, phone, virtual terminal)
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <!-- Section: Contact Information -->
+                <fieldset style="border:none; padding:0; margin:0 0 32px;">
+                  <legend style="font-family:var(--f-display); font-weight:700; font-size:16px; color:var(--c-white); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--c-border); width:100%; display:block;">Your Contact Information</legend>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="first-name">First Name <span class="required" aria-hidden="true">*</span></label>
+                      <input type="text" id="first-name" name="first_name" class="form-field" required autocomplete="given-name" />
+                      <div class="form-error" role="alert"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="last-name">Last Name <span class="required" aria-hidden="true">*</span></label>
+                      <input type="text" id="last-name" name="last_name" class="form-field" required autocomplete="family-name" />
+                      <div class="form-error" role="alert"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="title-role">Title / Role</label>
+                    <input type="text" id="title-role" name="title" class="form-field" placeholder="CEO, Controller, VP Finance…" autocomplete="organization-title" />
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="email">Email Address <span class="required" aria-hidden="true">*</span></label>
+                      <input type="email" id="email" name="email" class="form-field" required autocomplete="email" placeholder="you@yourcompany.com" />
+                      <div class="form-error" role="alert"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="phone">Phone Number <span class="required" aria-hidden="true">*</span></label>
+                      <input type="tel" id="phone" name="phone" class="form-field" required autocomplete="tel" placeholder="+1 (555) 000-0000" />
+                      <div class="form-error" role="alert"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="website">Business Website</label>
+                    <input type="url" id="website" name="website" class="form-field" data-validate="url" placeholder="https://yourcompany.com" autocomplete="url" />
+                    <div class="form-error" role="alert"></div>
+                  </div>
+                </fieldset>
+
+                <!-- Section: Additional -->
+                <fieldset style="border:none; padding:0; margin:0 0 32px;">
+                  <legend style="font-family:var(--f-display); font-weight:700; font-size:16px; color:var(--c-white); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--c-border); width:100%; display:block;">A Bit More</legend>
+
+                  <div class="form-group">
+                    <label for="referral-source">How Did You Hear About AiZenPay?</label>
+                    <select id="referral-source" name="referral_source" class="form-field">
+                      <option value="" disabled selected>Select source…</option>
+                      <option value="google">Google / Search</option>
+                      <option value="linkedin">LinkedIn</option>
+                      <option value="referral">Colleague / Referral</option>
+                      <option value="partner">Partner / Agent</option>
+                      <option value="event">Industry Event</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="comments">Comments or Additional Information</label>
+                    <textarea id="comments" name="comments" class="form-field" rows="4" placeholder="Tell us anything else we should know about your processing needs…"></textarea>
+                  </div>
+                </fieldset>
+
+                <!-- Consent -->
+                <div class="form-group" style="margin-bottom:28px;">
+                  <div class="checkbox-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="consent" required />
+                      I agree to AiZenPay's <a href="privacy.html" target="_blank">Privacy Policy</a> and <a href="terms.html" target="_blank">Terms of Service</a>. <span class="required" aria-hidden="true">*</span>
+                    </label>
+                    <div class="form-error" role="alert"></div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-primary--lg" style="width:100%; justify-content:center;">
+                  Submit Application &rarr;
+                </button>
+
+                <p style="font-size:12px; color:var(--c-text-mid); text-align:center; margin-top:16px;">
+                  By submitting, you consent to being contacted by an AiZenPay specialist. We never sell your data.
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <aside>
+            <div class="sidebar-card">
+              <h3>What Happens Next</h3>
+              <div class="steps-list">
+                <div class="step-item">
+                  <div class="step-item__num" aria-hidden="true">1</div>
+                  <div class="step-item__content">
+                    <div class="step-title">Application Review</div>
+                    <div class="step-desc">A payments specialist reviews your submission and reaches out within 1 business day to confirm details.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-item__num" aria-hidden="true">2</div>
+                  <div class="step-item__content">
+                    <div class="step-title">Underwriting</div>
+                    <div class="step-desc">Our streamlined underwriting process reviews your business profile. Most merchants are approved within 24 hours.</div>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-item__num" aria-hidden="true">3</div>
+                  <div class="step-item__content">
+                    <div class="step-title">Go Live</div>
+                    <div class="step-desc">Hardware shipped or API credentials issued. Your account is live and processing payments — within 48 hours.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding-top:24px; border-top:1px solid var(--c-border);">
+                <div style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--c-text-mid); margin-bottom:14px;">Trust Indicators</div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--c-text-body);">
+                    <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M8 1L2 3.5v4C2 11 5 13.5 8 15c3-1.5 6-4 6-7.5v-4L8 1z" stroke="#00CDB8" stroke-width="1.2" fill="rgba(0,205,184,0.1)"/></svg>
+                    PCI DSS Level 1 Compliant
+                  </div>
+                  <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--c-text-body);">
+                    <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><circle cx="8" cy="8" r="6" stroke="#00CDB8" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="#00CDB8" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    AI-Powered Authorization Routing
+                  </div>
+                  <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--c-text-body);">
+                    <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><circle cx="8" cy="8" r="6" stroke="#00CDB8" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#00CDB8" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    48-Hour Onboarding SLA
+                  </div>
+                  <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--c-text-body);">
+                    <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#00CDB8" stroke-width="1.2"/><path d="M5 8h6" stroke="#00CDB8" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    99.95% Uptime SLA
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--c-border);">
+                <div style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--c-text-mid); margin-bottom:12px;">Questions?</div>
+                <p style="font-size:13px; color:var(--c-text-body); line-height:1.6;">Email: <a href="mailto:info@aizenpay.com" style="color:var(--c-teal);">info@aizenpay.com</a></p>
+                <p style="font-size:13px; color:var(--c-text-body); line-height:1.6; margin-top:4px;">Or <a href="contact.html" style="color:var(--c-teal);">contact us here</a>.</p>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" aria-label="AiZenPay Home"><img src="images/logo.png" alt="AiZenPay" class="footer__logo" width="130" height="39" /></a>
+        <p>AI-powered payment processing built for the intelligent enterprise. PCI DSS Level 1 compliant infrastructure.</p>
+        <div class="footer__social" aria-label="Social media links">
+          <!-- TODO: Replace with live social URLs -->
+          <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="footer__social-link" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="footer__social-link" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="footer__col-title">Products</div><ul class="footer__links"><li><a href="products.html#card-present" class="footer__link">Card-Present</a></li><li><a href="products.html#card-not-present" class="footer__link">Card-Not-Present</a></li><li><a href="products.html#aizenhub" class="footer__link">AiZenHub <span class="badge-soon">Soon</span></a></li></ul></div>
+      <div><div class="footer__col-title">Company</div><ul class="footer__links"><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="why-aizenpay.html" class="footer__link">Why AiZenPay</a></li><li><a href="partners.html" class="footer__link">Partners</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+      <div><div class="footer__col-title">Legal</div><ul class="footer__links"><li><a href="privacy.html" class="footer__link">Privacy Policy</a></li><li><a href="terms.html" class="footer__link">Terms of Service</a></li></ul></div>
+    </div>
+    <div style="max-width:var(--max-width); margin:0 auto; padding:0 32px;">
+      <div class="footer__bottom">
+        <div class="footer__bottom-left">&copy; 2026 AiZenPay Inc. &nbsp;&middot;&nbsp; AiZenPay Inc. is a registered payment processing company. PCI DSS Level 1 compliant infrastructure. All trademarks are property of their respective owners.</div>
+        <div class="footer__bottom-right">Payments Engineered for What's Next</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie notice" aria-live="polite">
+    <p>We use essential cookies to ensure this website works properly. <a href="privacy.html">Learn more</a></p>
+    <button id="cookie-accept" class="btn-primary" style="white-space:nowrap; flex-shrink:0;">Accept</button>
+  </div>
+
+  <script src="scripts/main.js" defer></script>
+  <script src="scripts/form-handler.js" defer></script>
+  <script src="scripts/animations.js" defer></script>
+</body>
+</html>

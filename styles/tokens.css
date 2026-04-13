@@ -1,0 +1,79 @@
+/* ============================================================
+   AiZenPay — Design Tokens
+   styles/tokens.css
+   ============================================================ */
+
+:root {
+  /* ── Colors ── */
+  --c-teal:        #00CDB8;
+  --c-teal-lt:     #00EDD6;
+  --c-teal-dim:    rgba(0, 205, 184, 0.12);
+  --c-teal-glow:   rgba(0, 205, 184, 0.15);
+  --c-silver:      #B8C4CA;
+  --c-navy-dk:     #131829;
+  --c-navy:        #1C2340;
+  --c-navy-lt:     #252E50;
+  --c-navy-mid:    #1E2845;
+  --c-white:       #FFFFFF;
+  --c-text-body:   #C8D4DC;
+  --c-text-mid:    #8A9AB0;
+  --c-border:      rgba(255, 255, 255, 0.08);
+  --c-border-teal: rgba(0, 205, 184, 0.22);
+  --c-error:       #FF5A5A;
+  --c-success:     #00CDB8;
+  --c-amber:       #FFB800;
+
+  /* ── Typography ── */
+  --f-display: 'Syne', sans-serif;
+  --f-body:    'DM Sans', sans-serif;
+  --f-mono:    'JetBrains Mono', monospace;
+
+  /* ── Font Sizes ── */
+  --fs-xs:   11px;
+  --fs-sm:   13px;
+  --fs-base: 15px;
+  --fs-md:   17px;
+  --fs-lg:   20px;
+  --fs-xl:   24px;
+  --fs-2xl:  32px;
+  --fs-3xl:  42px;
+  --fs-4xl:  56px;
+  --fs-5xl:  72px;
+
+  /* ── Spacing ── */
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  24px;
+  --space-lg:  40px;
+  --space-xl:  64px;
+  --space-2xl: 96px;
+
+  /* ── Border Radius ── */
+  --radius-xs:   6px;
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-pill: 100px;
+
+  /* ── Shadows ── */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 32px rgba(0, 205, 184, 0.15);
+  --shadow-lg:   0 8px 40px rgba(0, 0, 0, 0.4);
+
+  /* ── Transitions ── */
+  --transition:      0.2s ease;
+  --transition-slow: 0.35s ease;
+
+  /* ── Z-index ── */
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+
+  /* ── Layout ── */
+  --max-width:     1200px;
+  --nav-height:    72px;
+  --section-py:    96px;
+  --section-py-sm: 64px;
+}
