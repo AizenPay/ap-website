@@ -5,10 +5,10 @@
 
 :root {
   /* ── Colors ── */
-  --c-teal:        #00CDB8;
-  --c-teal-lt:     #00EDD6;
-  --c-teal-dim:    rgba(0, 205, 184, 0.12);
-  --c-teal-glow:   rgba(0, 205, 184, 0.15);
+  --c-teal:        #1A7FFF;
+  --c-teal-lt:     #5599FF;
+  --c-teal-dim:    rgba(26, 127, 255, 0.12);
+  --c-teal-glow:   rgba(26, 127, 255, 0.15);
   --c-silver:      #B8C4CA;
   --c-navy-dk:     #131829;
   --c-navy:        #1C2340;
@@ -18,13 +18,13 @@
   --c-text-body:   #C8D4DC;
   --c-text-mid:    #8A9AB0;
   --c-border:      rgba(255, 255, 255, 0.08);
-  --c-border-teal: rgba(0, 205, 184, 0.22);
+  --c-border-teal: rgba(26, 127, 255, 0.22);
   --c-error:       #FF5A5A;
-  --c-success:     #00CDB8;
+  --c-success:     #1A7FFF;
   --c-amber:       #FFB800;
 
   /* ── Typography ── */
-  --f-display: 'Syne', sans-serif;
+  --f-display: 'Outfit', sans-serif;
   --f-body:    'DM Sans', sans-serif;
   --f-mono:    'JetBrains Mono', monospace;
 
@@ -59,7 +59,7 @@
   /* ── Shadows ── */
   --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 32px rgba(0, 205, 184, 0.15);
+  --shadow-glow: 0 0 32px rgba(26, 127, 255, 0.15);
   --shadow-lg:   0 8px 40px rgba(0, 0, 0, 0.4);
 
   /* ── Transitions ── */

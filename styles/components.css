@@ -388,8 +388,8 @@
 .cta-banner {
   background: var(--c-navy);
   border: 1px solid var(--c-border);
-  border-top: 1px solid rgba(0, 205, 184, 0.15);
-  border-bottom: 1px solid rgba(0, 205, 184, 0.15);
+  border-top: 1px solid rgba(26, 127, 255, 0.15);
+  border-bottom: 1px solid rgba(26, 127, 255, 0.15);
   text-align: center;
   padding: var(--space-2xl) var(--space-lg);
   position: relative;
@@ -489,7 +489,7 @@
 .form-field::placeholder { color: rgba(255, 255, 255, 0.25); }
 .form-field:focus {
   border-color: var(--c-teal);
-  box-shadow: 0 0 0 3px rgba(0, 205, 184, 0.15);
+  box-shadow: 0 0 0 3px rgba(26, 127, 255, 0.15);
 }
 .form-field.error {
   border-color: var(--c-error);
@@ -584,7 +584,7 @@ textarea.form-field {
   margin: 24px 0;
 }
 .comparison-table thead {
-  border-bottom: 1px solid rgba(0, 205, 184, 0.25);
+  border-bottom: 1px solid rgba(26, 127, 255, 0.25);
 }
 .comparison-table thead th {
   text-align: left;
