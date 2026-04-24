@@ -43,7 +43,7 @@
 }
 .navbar__logo img {
   height: 52px;
-  width: 52px;
+  width: auto;
   object-fit: contain;
 }
 
