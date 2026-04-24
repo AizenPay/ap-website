@@ -672,7 +672,7 @@ textarea.form-field {
 }
 .footer__logo {
   height: 48px;
-  width: 48px;
+  width: auto;
   object-fit: contain;
 }
 .footer__social {
